@@ -4,7 +4,7 @@
 #define MAX 100
 
 int q[MAX];
-bool visited[MAX]={0};
+bool visited[MAX] = {0};
 int G[MAX][MAX];
 int front = 0;
 int rear = 0;
@@ -23,17 +23,22 @@ bool isEmpty()
 {
     return (front == rear);
 }
-void bfs(int node,int edge, int start){
+void bfs(int node, int edge, int start)
+{
     push(start);
-    while(!isEmpty()){
-        int u=pop();
-        if(!visited[u]){
-            visited[u]=true;
-            printf("%d ",u);
-            for(int v=1;v<=node;v++){
-                    if(G[u][v]&& !visited[v]){
-                        push(v);
-                    }
+    while (!isEmpty())
+    {
+        int u = pop();
+        if (!visited[u])
+        {
+            visited[u] = true;
+            printf("%d ", u);
+            for (int v = 1; v <= node; v++)
+            {
+                if (G[u][v] && !visited[v])
+                {
+                    push(v);
+                }
             }
         }
     }
@@ -54,7 +59,7 @@ int main()
     {
         int u, v;
         scanf("%d %d", &u, &v);
-        G[u][v]=1;
+        G[u][v] = 1;
     }
-    bfs(node,edge,1);
+    bfs(node, edge, 1);
 }
